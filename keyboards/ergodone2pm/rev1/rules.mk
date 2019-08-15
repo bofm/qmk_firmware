@@ -1,0 +1,8 @@
+MCU = atmega32u4
+F_CPU = 16000000
+ARCH = AVR8
+F_USB = $(F_CPU)
+BOOTLOADER = caterina
+
+SPLIT_KEYBOARD = yes
+USE_I2C = yes
