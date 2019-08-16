@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_H
+````#include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
 #include "version.h"
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
        KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
        KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
-          EPRM,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+          RESET,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        RGB_MOD,KC_TRNS,
                                                KC_TRNS,
                                RGB_VAD,RGB_VAI,KC_TRNS,
