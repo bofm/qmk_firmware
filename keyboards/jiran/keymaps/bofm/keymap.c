@@ -24,6 +24,7 @@ enum custom_keycodes {
 
 #define KC_LSHSPC LSFT_T(KC_SPC)
 #define KC_RSHBSP LSFT_T(KC_BSPC)
+#define KC_RSDEL LSFT_T(KC_DEL)
 #define KC_LOESC LT(_LOWER, KC_ESC)
 #define KC_LOENT LT(_LOWER, KC_ENT)
 
@@ -41,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ALGR,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤                          ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                          KC_CMD, KC_LSHSPC,KC_LOESC,                           KC_LOENT, KC_RSHBSP, RAISE
+                                          KC_CMD, KC_LSHSPC,KC_LOESC,                           KC_LOENT,KC_RSHBSP, RAISE
                                   //     └────────┴────────┴────────┘                          └────────┴────────┴────────┘
   ),
 
@@ -55,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LALT, KC_Z,    KC_P0,   KC_PDOT, KC_PPLS, KC_END,                             KC_VOLD, KC_M,    KC_DOWN, KC_DOT,  KC_BSLS, KC_ALGR,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤                          ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          _______, KC_SPC,  KC_ESC,                             KC_ENT,  KC_DEL,  _______
+                                          _______, KC_LSHSPC,KC_ESC,                             KC_ENT,  KC_RSDEL, _______
                                     //   └────────┴────────┴────────┘                          └────────┴────────┴────────┘
   ),
 
