@@ -22,11 +22,13 @@ enum custom_keycodes {
 #define KC_ALT_L LALT(KC_LEFT)
 #define KC_ALT_R LALT(KC_RGHT)
 
-#define KC_LSHSPC LSFT_T(KC_SPC)
-#define KC_RSHBSP LSFT_T(KC_BSPC)
-#define KC_RSDEL LSFT_T(KC_DEL)
+#define KC_LALSPC LALT_T(KC_SPC)
+#define KC_RALBSP RALT_T(KC_BSPC)
+#define KC_ALDEL RALT_T(KC_DEL)
 #define KC_LOESC LT(_LOWER, KC_ESC)
 #define KC_LOENT LT(_LOWER, KC_ENT)
+#define KC_LOF LT(_LOWER, KC_F)
+#define KC_RCTQT RCTL_T(KC_QUOT)
 
 ////////////////////////////////////////
 
@@ -38,11 +40,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
       KC_CMD,  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+               KC_LCTL, KC_A,    KC_S,    KC_D,    KC_LOF,  KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_RCTQT,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ALGR,
+               KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤                          ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                          KC_CMD, KC_LSHSPC,KC_LOESC,                           KC_LOENT,KC_RSHBSP, RAISE
+                                          KC_CMD, KC_LALSPC,KC_LOESC,                           KC_LOENT,KC_RALBSP, RAISE
                                   //     └────────┴────────┴────────┘                          └────────┴────────┴────────┘
   ),
 
@@ -54,9 +56,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
                KC_LCTL, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_PGDN,                            KC_MUTE, KC_LEFT, KC_UP,   KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LALT, KC_Z,    KC_P0,   KC_PDOT, KC_PPLS, KC_END,                             KC_VOLD, KC_M,    KC_DOWN, KC_DOT,  KC_BSLS, KC_ALGR,
+               KC_LSFT,  KC_Z,    KC_P0,   KC_PDOT, KC_PPLS, KC_END,                             KC_VOLD, KC_M,    KC_DOWN, KC_DOT,  KC_BSLS, KC_RSFT,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤                          ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          _______, KC_LSHSPC,KC_ESC,                             KC_ENT,  KC_RSDEL, _______
+                                          _______, KC_LALSPC,KC_ESC,                             KC_ENT, KC_ALDEL, _______
                                     //   └────────┴────────┴────────┘                          └────────┴────────┴────────┘
   ),
 
@@ -68,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
                KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_MUTE, KC_LEFT, KC_UP,   KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_VOLD, KC_M,    KC_DOWN, KC_DOT,  KC_BSLS, KC_ALGR,
+               KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_VOLD, KC_M,    KC_DOWN, KC_DOT,  KC_BSLS, KC_RSFT,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤                          ├────────┼────────┴────────┴────────┴────────┘────────┘
                                           ADJUST,  KC_SPC,  KC_ESC,                             KC_ENT,  KC_BSPC, _______
                                     //   └────────┴────────┴────────┘                          └────────┴────────┴────────┘
