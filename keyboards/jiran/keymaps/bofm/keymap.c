@@ -63,11 +63,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
                KC_GRV,  KC_P7,   KC_P8,   KC_P9,   KC_PSLS, KC_HOME,         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_EQL,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-      KC_CMD,  KC_NLCK, KC_P4,   KC_P5,   KC_P6,   KC_PAST, KC_PGUP,         KC_VOLU, KC_ALT_L, KC_I,   KC_ALT_R, KC_P,    KC_LBRC, KC_RCMD,
+      KC_CMD,  KC_NLCK, KC_P4,   KC_P5,   KC_P6,   KC_PAST, KC_PGUP,         KC_VOLU, KC_ALT_L, KC_UP,   KC_ALT_R, KC_P,    KC_LBRC, KC_RCMD,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSFT, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_PGDN,         KC_MUTE, KC_LEFT, KC_UP,   KC_RGHT, KC_SCLN, KC_RCTL,
+               KC_LSFT, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_PGDN,         KC_MUTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LCTL,  KC_Z,    KC_P0,   KC_PDOT, KC_PPLS, KC_END,          KC_VOLD, KC_M,    KC_DOWN, KC_DOT,  KC_BSLS, KC_RCTL,
+               KC_LCTL,  KC_Z,    KC_P0,   KC_PDOT, KC_PPLS, KC_END,          KC_VOLD, KC_M,    _______, KC_DOT,  KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
                                           _______, KC_LALSPC,KC_ESC,          KC_ENT,KC_RALDEL, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
