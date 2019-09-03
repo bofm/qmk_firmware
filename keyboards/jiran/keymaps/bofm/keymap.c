@@ -132,9 +132,13 @@ void matrix_scan_user(void) {     // kc_cmd_space_active timer.
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  if (is_kc_cmd_space_active && keycode != KC_CMDSPT) {
+    is_kc_cmd_space_active = false;
+  }
+
   switch (keycode) {
     case QWERTY:
-      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
@@ -156,7 +160,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case LOWER:
-      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -167,7 +170,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case RAISE:
-      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -178,7 +180,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case SSS:
-      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         layer_on(_SSS);
       } else {
