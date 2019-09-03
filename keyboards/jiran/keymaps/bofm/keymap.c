@@ -13,6 +13,7 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   SSS,
+  KC_CMDSPT,
   ADJUST,
 };
 
@@ -43,7 +44,6 @@ enum custom_keycodes {
 #define KC_CMD_L LGUI(KC_LEFT)
 #define KC_CMD_R LGUI(KC_RIGHT)
 #define KC_CMDSP LGUI(KC_SPC)
-#define KC_CMDSPT LGUI_T(LGUI(KC_SPC))
 
 ////////////////////////////////////////
 
@@ -53,13 +53,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
                KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-      KC_CMDSP,KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,
+      KC_ESC,  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
                KC_LSFT, KC_A,    KC_S,    KC_D,    KC_LOF,  KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_RSHQT,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                           KC_CMD,KC_LALSPC,KC_LOESC,        KC_LOENT,KC_RALBSP, RAISE
+                                         KC_CMDSPT,KC_LALSPC,KC_LOESC,        KC_LOENT,KC_RALBSP, RAISE
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -120,15 +120,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+bool is_kc_cmd_space_active = false;
+uint16_t kc_cmd_space_active_timer = 0;
+
+void matrix_scan_user(void) {     // kc_cmd_space_active timer.
+  if (is_kc_cmd_space_active) {
+    if (timer_elapsed(kc_cmd_space_active_timer) > 300) {
+      is_kc_cmd_space_active = false;
+    }
+  }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
+      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
       return false;
       break;
+    case KC_CMDSPT:  // lang switch
+      if (record->event.pressed) {
+        register_code(KC_CMD);
+        is_kc_cmd_space_active = true;
+        kc_cmd_space_active_timer = timer_read();
+      } else {
+        if (is_kc_cmd_space_active) {
+          register_code(KC_SPC);
+          unregister_code(KC_SPC);
+        }
+        unregister_code(KC_CMD);
+        is_kc_cmd_space_active = false;
+      }
+      return false;
+      break;
     case LOWER:
+      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -139,6 +167,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case RAISE:
+      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -149,6 +178,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case SSS:
+      is_kc_cmd_space_active = false;
       if (record->event.pressed) {
         layer_on(_SSS);
       } else {
