@@ -46,8 +46,8 @@ enum custom_keycodes {
 #define KC_CMDSP LGUI(KC_SPC)
 #define KC_1PASS LGUI(LALT(KC_BSLS))
 #define KC_LCAG LCTL(LALT(KC_LGUI))
-#define KC_LPAR LSFT(KC_9)
-#define KC_RPAR LSFT(KC_0)
+#define KC_LPRN LSFT(KC_9)
+#define KC_RPRN LSFT(KC_0)
 #define KC_LCBR LSFT(KC_LBRC)
 #define KC_RCBR LSFT(KC_RBRC)
 #define KC_PLUS LSFT(KC_EQL)
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
        KC_ESC, KC_NLCK, _______, _______, KC_LBRC, KC_RBRC, KC_PLUS,         KC_VOLU, KC_ALT_L, KC_UP, KC_ALT_R,KC_1PASS, KC_LBRC, KC_RCMD,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSFT, _______, _______, KC_LPAR, KC_RPAR,  KC_EQL,         KC_MUTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN, KC_RCTL,
+               KC_LSFT, _______, _______, KC_LPRN, KC_RPRN,  KC_EQL,         KC_MUTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR, _______,         KC_VOLD, KC_CMD_L,XXXXXXX, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
