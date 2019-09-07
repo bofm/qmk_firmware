@@ -13,7 +13,6 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   SSS,
-  KC_CMDSPT,
   ADJUST,
 };
 
@@ -24,19 +23,15 @@ enum custom_keycodes {
 #define KC_RCMD KC_RGUI
 #define KC_ALT_L LALT(KC_LEFT)
 #define KC_ALT_R LALT(KC_RGHT)
-
 #define KC_LALSPC LALT_T(KC_SPC)
 #define KC_RALBSP RALT_T(KC_BSPC)
 #define KC_ALDEL RALT_T(KC_DEL)
 #define KC_LSHSPC LSFT_T(KC_SPC)
-#define KC_LALSPC LALT_T(KC_SPC)
 #define KC_RSHBSP RSFT_T(KC_BSPC)
-#define KC_RALBSP RALT_T(KC_BSPC)
 #define KC_RSHDEL RSFT_T(KC_DEL)
 #define KC_RALDEL RALT_T(KC_DEL)
 #define KC_LOESC LT(_LOWER, KC_ESC)
 #define KC_LOENT LT(_LOWER, KC_ENT)
-#define KC_LOCMDSP LT(_LOWER, KC_CMDSPT)
 #define KC_LOF LT(_LOWER, KC_F)
 #define KC_RCTQT RCTL_T(KC_QUOT)
 #define KC_RSHQT RSFT_T(KC_QUOT)
@@ -52,7 +47,7 @@ enum custom_keycodes {
 #define KC_LCBR LSFT(KC_LBRC)
 #define KC_RCBR LSFT(KC_RBRC)
 #define KC_PLUS LSFT(KC_EQL)
-#define KC_RAIDEL LT(RAISE, KC_DEL)
+#define KC_RAIDEL LT(_RAISE, KC_DEL)
 
 ////////////////////////////////////////
 
@@ -68,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                          RAISE,  CMD_SP_T, KC_LOCMDSP,      KC_LOENT,KC_RALBSP,KC_RAIDEL
+                                          KC_LALT,  CMD_SP_T,KC_LOESC,     KC_LOENT,KC_RALBSP,KC_RAIDEL
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -82,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR, _______,         KC_VOLD, KC_CMD_L,XXXXXXX, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          KC_LALT,  KC_SPC, KC_ESC,         KC_ENT, KC_RALDEL, _______
+                                          KC_LALT,  KC_SPC, KC_ESC,         KC_CMDSP, KC_RALDEL, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -136,15 +131,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case QWERTY:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
-      }
-      return false;
-      break;
-    case KC_CMDSPT:  // lang switch
-      if (record->event.pressed) {
-        register_code(KC_CMD);
-        register_code(KC_SPC);
-        unregister_code(KC_SPC);
-        unregister_code(KC_CMD);
       }
       return false;
       break;
