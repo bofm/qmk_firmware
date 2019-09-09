@@ -1,3 +1,5 @@
+// http://www.keyboard-layout-editor.com/#/gists/6ba1476134c42e069a3c009b3fe0900b
+
 #include QMK_KEYBOARD_H
 
 extern keymap_config_t keymap_config;
@@ -85,9 +87,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT(
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
-               KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_EQL,
+               KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-      KC_CMD,  KC_CAPS, KC_SLSH,  KC_7,    KC_8,    KC_9,   KC_MINS,         KC_VOLU, KC_U,    KC_UP,    KC_O,    KC_P,    KC_LBRC, KC_RCMD,
+      KC_CMD,  KC_CAPS, KC_SLSH,  KC_7,    KC_8,    KC_9,   KC_MINS,         KC_VOLU, KC_U,    KC_UP,    KC_O,    KC_P,    KC_LBRC, KC_F12,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
                KC_LSEQ, KC_MULT,  KC_4,    KC_5,    KC_6,   KC_PLUS,           KC_MUTE, KC_LEFT, KC_DOWN,  KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
