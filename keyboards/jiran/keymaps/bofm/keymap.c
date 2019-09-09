@@ -91,9 +91,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
       KC_CMD,  KC_CAPS, KC_SLSH,  KC_7,    KC_8,    KC_9,   KC_MINS,         KC_VOLU, KC_U,    KC_UP,    KC_O,    KC_P,    KC_LBRC, KC_F12,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSEQ, KC_MULT,  KC_4,    KC_5,    KC_6,   KC_PLUS,           KC_MUTE, KC_LEFT, KC_DOWN,  KC_RGHT, KC_SCLN, KC_RCTL,
+               KC_LSEQ, KC_MULT,  KC_4,    KC_5,    KC_6,   KC_PLUS,         KC_MUTE, KC_LEFT, KC_DOWN,  KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LCTL,  KC_0,    KC_1,    KC_2,    KC_3,   KC_DOT,           KC_VOLD, KC_M,    XXXXXXX, KC_DOT,  KC_BSLS, KC_RCTL,
+               KC_LCTL,  KC_0,    KC_1,    KC_2,    KC_3,   KC_DOT,          KC_VOLD, KC_M,    XXXXXXX, KC_DOT,  KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┘────────┘
                                           ADJUST,  KC_CMD,  KC_SPC,          KC_ENT,  KC_BSPC, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
