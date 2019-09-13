@@ -58,6 +58,7 @@ enum custom_keycodes {
 #define CT_SH_TAB LCTL(LSFT(KC_TAB))
 #define LTTABS LT(_TABS, KC_TAB)
 #define SFT_TAB LSFT(KC_TAB)
+#define PIPE LSFT(KC_BSLS)
 
 ////////////////////////////////////////
 
@@ -85,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
                KC_LSFT, _______, _______, KC_LPRN, KC_RPRN, KC_PLUS,         KC_MUTE, KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR, _______,         KC_VOLD, KC_CMD_L,XXXXXXX, KC_CMD_R, KC_BSLS, KC_RCTL,
+               KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   PIPE,          KC_VOLD, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
                                           KC_LALT,  KC_SPC, KC_CMDSP,      KC_CMDSP, KC_RALDEL, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
