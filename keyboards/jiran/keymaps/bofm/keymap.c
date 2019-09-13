@@ -23,7 +23,6 @@ enum custom_keycodes {
 ////////// custom aliases and keycodes //////////////
 
 #define KC_CMD KC_LGUI
-
 #define KC_RCMD KC_RGUI
 #define KC_ALT_L LALT(KC_LEFT)
 #define KC_ALT_R LALT(KC_RGHT)
@@ -74,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                          KC_LALT,  CMD_SP_T,KC_LOESC,     KC_LOENT,KC_RALBSP,KC_RAIDEL
+                                          KC_LALT, CMD_SP_T,KC_LOESC,       KC_LOENT,KC_RALBSP,KC_RAIDEL
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
