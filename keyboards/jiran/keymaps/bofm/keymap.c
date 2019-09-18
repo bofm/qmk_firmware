@@ -17,6 +17,10 @@ enum custom_keycodes {
   RAISE,
   SSS,
   TABS,
+  CMD_TAB,
+  CMD_SHTAB,
+  CT_TAB,
+  CT_SHTAB,
   ADJUST,
 };
 
@@ -53,8 +57,6 @@ enum custom_keycodes {
 #define KC_PLUS LSFT(KC_EQL)
 #define KC_MULT LSFT(KC_8)
 #define KC_RAIDEL LT(_RAISE, KC_DEL)
-#define CTRL_TAB LCTL(KC_TAB)
-#define CT_SH_TAB LCTL(LSFT(KC_TAB))
 #define LTTABS LT(_TABS, KC_TAB)
 #define SFT_TAB LSFT(KC_TAB)
 #define PIPE LSFT(KC_BSLS)
@@ -87,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   PIPE,          KC_VOLD, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          KC_LALT,  KC_SPC, KC_CMDSP,      KC_CMDSP, KC_RALDEL, _______
+                                          KC_LALT,  KC_SPC,  KC_ESC,         KC_ENT, KC_RALDEL, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -125,9 +127,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
       _______, _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______, _______,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               _______, _______, _______, _______, _______, _______,         _______,  KC_TAB, SFT_TAB, _______, _______, _______,
+               _______, _______, _______, _______, _______, _______,         _______, CMD_TAB,CMD_SHTAB, _______, _______, _______,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-               _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+               _______, _______, _______, _______, _______, _______,         _______, CT_TAB,  CT_SHTAB, _______, _______, _______,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┘
                                           _______,  _______, _______,        _______, _______, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
@@ -155,6 +157,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case QWERTY:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
+      }
+      return false;
+      break;
+    case CMD_TAB:
+      if (record->event.pressed) {
+        if (!(get_mods() & MOD_BIT(KC_LCMD))) {
+          register_mods(MOD_BIT(KC_LCMD));
+        }
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
+      break;
+    case CMD_SHTAB:
+      if (record->event.pressed) {
+        if (!(get_mods() & MOD_BIT(KC_LCMD))) {
+          register_mods(MOD_BIT(KC_LCMD));
+        }
+        register_mods(MOD_BIT(KC_LSFT));
+        register_code(KC_TAB);
+      } else {
+        unregister_mods(MOD_BIT(KC_LSFT));
+        unregister_code(KC_TAB);
+      }
+      return false;
+      break;
+    case CT_TAB:
+      if (record->event.pressed) {
+        if (!(get_mods() & MOD_BIT(KC_LCTL))) {
+          register_mods(MOD_BIT(KC_LCTL));
+        }
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
+      break;
+    case CT_SHTAB:
+      if (record->event.pressed) {
+        if (!(get_mods() & MOD_BIT(KC_LCTL))) {
+          register_mods(MOD_BIT(KC_LCTL));
+        }
+        register_mods(MOD_BIT(KC_LSFT));
+        register_code(KC_TAB);
+      } else {
+        unregister_mods(MOD_BIT(KC_LSFT));
+        unregister_code(KC_TAB);
       }
       return false;
       break;
@@ -197,12 +247,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   switch (layer) {
   case _TABS:
-    register_mods(MOD_BIT(KC_LCTL));
     prev_layer = layer;
     break;
   default: //  for any other layers, or the default layer
     if (prev_layer == _TABS) {
-      unregister_mods(MOD_BIT(KC_LCTL));
+      if (get_mods() & MOD_BIT(KC_LCMD)) {
+        unregister_mods(MOD_BIT(KC_LCMD));
+      }
+      if (get_mods() & MOD_BIT(KC_LCTL)) {
+        unregister_mods(MOD_BIT(KC_LCTL));
+      }
     }
     prev_layer = layer;
     break;
