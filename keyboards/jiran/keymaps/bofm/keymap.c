@@ -21,6 +21,7 @@ enum custom_keycodes {
   CMD_SHTAB,
   CT_TAB,
   CT_SHTAB,
+  LANG_ALT_T,
   ADJUST,
 };
 
@@ -75,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                          KC_LALT, CMD_SP_T,KC_LOESC,       KC_LOENT,KC_RALBSP,KC_RAIDEL
+                                        LANG_ALT_T, CMD_SP_T,KC_LOESC,       KC_LOENT,KC_RALBSP,KC_RAIDEL
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -151,12 +152,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+static uint16_t _lang_alt_t_timer;
+
+static bool _lang_alt_t_pressed = false;
+static uint16_t _prev_keycode = 0;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  if (_lang_alt_t_pressed && _prev_keycode == LANG_ALT_T && keycode != LANG_ALT_T) {
+    register_mods(MOD_BIT(KC_LALT));
+  }
 
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
+      }
+      return false;
+      break;
+    case LOWER:
+      if (record->event.pressed) {
+        layer_on(_LOWER);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_LOWER);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      }
+      return false;
+      break;
+    case RAISE:
+      if (record->event.pressed) {
+        layer_on(_RAISE);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_RAISE);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
       return false;
       break;
@@ -208,25 +238,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER:
+    case LANG_ALT_T:
       if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        _lang_alt_t_pressed = true;
+        _lang_alt_t_timer = timer_read();
       } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        if (_prev_keycode == LANG_ALT_T && _lang_alt_t_pressed && timer_elapsed(_lang_alt_t_timer) < 300) {
+          register_mods(MOD_BIT(KC_LCMD));
+          register_code(KC_SPC);
+          unregister_code(KC_SPC);
+          unregister_mods(MOD_BIT(KC_LCMD));
+        } else {
+          unregister_mods(MOD_BIT(KC_LALT));
+        }
+        _lang_alt_t_pressed = false;
       }
-      return false;
-      break;
-    case RAISE:
-      if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
       break;
     case ADJUST:
       if (record->event.pressed) {
@@ -237,10 +263,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
   }
+  _prev_keycode = keycode;
   return true;
 }
 
-uint16_t prev_layer = _QWERTY;
+static uint16_t prev_layer = _QWERTY;
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   uint16_t layer = get_highest_layer(state);
