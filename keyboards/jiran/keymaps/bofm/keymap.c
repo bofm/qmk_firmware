@@ -247,19 +247,20 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   switch (layer) {
   case _TABS:
-    prev_layer = layer;
     break;
   default: //  for any other layers, or the default layer
-    if (prev_layer == _TABS) {
-      if (get_mods() & MOD_BIT(KC_LCMD)) {
-        unregister_mods(MOD_BIT(KC_LCMD));
-      }
-      if (get_mods() & MOD_BIT(KC_LCTL)) {
-        unregister_mods(MOD_BIT(KC_LCTL));
-      }
+    switch (prev_layer) {
+      case _TABS:
+        if (get_mods() & MOD_BIT(KC_LCMD)) {
+          unregister_mods(MOD_BIT(KC_LCMD));
+        }
+        if (get_mods() & MOD_BIT(KC_LCTL)) {
+          unregister_mods(MOD_BIT(KC_LCTL));
+        }
+        break;
     }
-    prev_layer = layer;
     break;
   }
+  prev_layer = layer;
   return state;
 }
