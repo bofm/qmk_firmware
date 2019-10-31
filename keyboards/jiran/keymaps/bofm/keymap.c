@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                        LANG_ALT_T, CMD_SP_T,KC_LOESC,       KC_LOENT,KC_RALBSP,KC_RAIDEL
+                                        LANG_ALT_T,CMD_SP_T,KC_LOESC,       KC_LOENT,KC_RALBSP,KC_RAIDEL
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   PIPE,          KC_MUTE, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          KC_LALT,  KC_SPC,  KC_ESC,         KC_ENT, KC_RALDEL, _______
+                                          KC_LALT, CMD_SP_T,  KC_ESC,         KC_ENT, KC_RALDEL, _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
