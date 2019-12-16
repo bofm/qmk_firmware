@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
                KC_GRV,   KC_F1,   KC_F2,    KC_F3,   KC_F4,  KC_F5,           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_EQL,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-       KC_ESC, KC_NLCK, _______, _______, KC_LBRC, KC_RBRC, KC_PLUS,         KC_VOLD, KC_ALT_L, KC_UP, KC_ALT_R,KC_1PASS, KC_LBRC, KC_RCMD,
+       KC_ESC, KC_NLCK, _______, _______, KC_LBRC, KC_RBRC, KC_PLUS,         KC_PGUP, KC_ALT_L, KC_UP, KC_ALT_R,KC_1PASS, KC_LBRC, KC_RCMD,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSFT, _______, _______, KC_LPRN, KC_RPRN,  KC_EQL,         KC_CMDSP,KC_LEFT, KC_DOWN, KC_RGHT, GOTODEF, KC_RCTL,
+               KC_LSFT, _______, _______, KC_LPRN, KC_RPRN,  KC_EQL,         KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, GOTODEF, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   PIPE,          KC_MUTE, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
