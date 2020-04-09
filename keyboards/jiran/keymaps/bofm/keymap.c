@@ -34,8 +34,6 @@ enum custom_keycodes {
 #define KC_ALDEL RALT_T(KC_DEL)
 #define KC_LSHSPC LSFT_T(KC_SPC)
 #define KC_LSEQ LSFT_T(KC_EQL)
-#define KC_RSHBSP RSFT_T(KC_BSPC)
-#define KC_RSHDEL RSFT_T(KC_DEL)
 #define KC_RALDEL RALT_T(KC_DEL)
 #define KC_LOESC LT(_LOWER, KC_ESC)
 #define KC_ALENT LALT_T(KC_ENT)
