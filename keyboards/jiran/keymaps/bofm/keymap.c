@@ -31,6 +31,7 @@ enum custom_keycodes {
 #define KC_ALT_L LALT(KC_LEFT)
 #define KC_ALT_R LALT(KC_RGHT)
 #define KC_LOBSP LT(_LOWER, KC_BSPC)
+#define KC_LOL LT(_LOWER, KC_L)
 #define KC_ALDEL RALT_T(KC_DEL)
 #define KC_LSHSPC LSFT_T(KC_SPC)
 #define KC_LSEQ LSFT_T(KC_EQL)
@@ -69,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
       KC_LCAG,  LTTABS,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSFT, KC_A,    KC_S,    KC_D,    KC_LOF,   KC_G,            KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_RSHQT,
+               KC_LSFT, KC_A,    KC_S,    KC_D,    KC_LOF,   KC_G,            KC_H,    KC_J,    KC_K,    KC_LOL , KC_SCLN, KC_RSHQT,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
