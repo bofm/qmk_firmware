@@ -45,7 +45,7 @@ enum custom_keycodes {
 #define KC_CMD_L LGUI(KC_LEFT)
 #define KC_CMD_R LGUI(KC_RIGHT)
 #define KC_CMDSP LGUI(KC_SPC)
-#define CMD_SP_T LGUI_T(KC_SPC)
+#define KC_CMD_SP_T LGUI_T(KC_SPC)
 #define KC_1PASS LGUI(LALT(KC_BSLS))
 #define KC_LCAG LCTL(LALT(KC_LGUI))
 #define KC_LPRN LSFT(KC_9)
@@ -55,10 +55,9 @@ enum custom_keycodes {
 #define KC_PLUS LSFT(KC_EQL)
 #define KC_MULT LSFT(KC_8)
 #define KC_RAIDEL LT(_RAISE, KC_DEL)
-#define LTTABS LT(_TABS, KC_TAB)
-#define SFT_TAB LSFT(KC_TAB)
-#define PIPE LSFT(KC_BSLS)
-#define GOTODEF LCMD(KC_BSLS)
+#define KC_LTTABS LT(_TABS, KC_TAB)
+#define KC_PIPE LSFT(KC_BSLS)
+#define KC_GOTODEF LCMD(KC_BSLS)
 
 ////////////////////////////////////////
 
@@ -68,13 +67,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
                KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_MINS,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-      KC_LCAG,  LTTABS,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,
+      KC_LCAG,  KC_LTTABS,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
                KC_LSFT, KC_A,    KC_S,    KC_D,    KC_LOF,   KC_G,            KC_H,    KC_J,    KC_K,    KC_LOL , KC_SCLN, KC_RSHQT,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                KC_LCTL,  KC_Z,    KC_X,   KC_SSSC,  KC_V,    KC_B,            KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                          KC_LALT, CMD_SP_T,KC_LOESC,        KC_ALENT,KC_LOBSP,KC_RAIDEL
+                                          KC_LALT, KC_CMD_SP_T,KC_LOESC,        KC_ALENT,KC_LOBSP,KC_RAIDEL
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
@@ -84,11 +83,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
        KC_ESC, KC_NLCK, _______, _______, KC_LBRC, KC_RBRC, KC_PLUS,         KC_PGUP, KC_ALT_L, KC_UP, KC_ALT_R,KC_1PASS, KC_LBRC, KC_RCMD,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSFT, _______, _______, KC_LPRN, KC_RPRN,  KC_EQL,         KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, GOTODEF, KC_RCTL,
+               KC_LSFT, _______, _______, KC_LPRN, KC_RPRN,  KC_EQL,         KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, KC_GOTODEF, KC_RCTL,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   PIPE,          KC_MUTE, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
+               KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   KC_PIPE,          KC_MUTE, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          KC_LALT, CMD_SP_T,  KC_ESC,        KC_ENT,   KC_DEL , _______
+                                          KC_LALT, KC_CMD_SP_T,  KC_ESC,        KC_ENT,   KC_DEL , _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
