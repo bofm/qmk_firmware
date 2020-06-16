@@ -59,6 +59,8 @@ enum custom_keycodes {
 #define KC_PIPE LSFT(KC_BSLS)
 #define KC_GOTODEF LCMD(KC_BSLS)
 
+#define KC________ _______
+
 ////////////////////////////////////////
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
