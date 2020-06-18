@@ -30,14 +30,14 @@ enum custom_keycodes {
 #define KC_RCMD KC_RGUI
 #define KC_ALT_L LALT(KC_LEFT)
 #define KC_ALT_R LALT(KC_RGHT)
-#define KC_LOBSP LT(_LOWER, KC_BSPC)
+#define KC_LOENT LT(_LOWER, KC_ENT)
 #define KC_LOL LT(_LOWER, KC_L)
 #define KC_ALDEL RALT_T(KC_DEL)
 #define KC_LSHSPC LSFT_T(KC_SPC)
 #define KC_LSEQ LSFT_T(KC_EQL)
 #define KC_RALDEL RALT_T(KC_DEL)
 #define KC_LOESC LT(_LOWER, KC_ESC)
-#define KC_ALENT LALT_T(KC_ENT)
+#define KC_ALBSPC LALT_T(KC_BSPC)
 #define KC_LOF LT(_LOWER, KC_F)
 #define KC_RCTQT RCTL_T(KC_QUOT)
 #define KC_RSHQT RSFT_T(KC_QUOT)
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
                  LCTL  ,    Z   ,    X   ,  SSSC  ,    V   ,    B   ,            N   ,    M   ,  COMM  ,   DOT  ,  SLSH  ,  RCTL  ,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┼────────┴────────┴────────┴────────┘
-                                            LALT  ,CMD_SP_T,  LOESC ,          ALENT ,  LOBSP , RAIDEL
+                                            LALT  ,CMD_SP_T,  LOESC ,          LOENT , ALBSPC , RAIDEL
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
