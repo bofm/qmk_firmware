@@ -79,17 +79,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   //     └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
-  [_LOWER] = LAYOUT(
+  [_LOWER] = LAYOUT_kc(
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
-               KC_GRV,   KC_F1,   KC_F2,    KC_F3,   KC_F4,  KC_F5,           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_EQL,
+                 GRV   ,   F1   ,   F2   ,    F3   ,   F4   ,  F5   ,           F6   ,   F7   ,   F8   ,   F9   ,   F10   ,  EQL  ,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-       KC_ESC, KC_NLCK, _______, _______, KC_LBRC, KC_RBRC, KC_PLUS,         KC_PGUP, KC_ALT_L, KC_UP, KC_ALT_R,KC_1PASS, KC_LBRC, KC_RCMD,
+         ESC  ,  CLCK  , _______, _______,  LBRC  ,  RBRC  ,  PLUS  ,          PGUP  ,  ALT_L ,   UP   ,  ALT_R ,  1PASS ,  LBRC  ,  RCMD  ,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-               KC_LSFT, _______, _______, KC_LPRN, KC_RPRN,  KC_EQL,         KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, KC_GOTODEF, KC_RCTL,
+                 LSFT  , _______, _______,  LPRN  ,  RPRN  ,   EQL  ,          PGDN  ,  LEFT  ,  DOWN  ,  RGHT  , GOTODEF,  RCTL  ,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-               KC_LCTL,  _______,_______, KC_LCBR, KC_RCBR,   KC_PIPE,          KC_MUTE, KC_CMD_L,KC_MINS, KC_CMD_R, KC_BSLS, KC_RCTL,
+                 LCTL  , _______, _______,  LCBR  ,  RCBR  ,  PIPE  ,          MUTE  ,  CMD_L ,   MINS ,  CMD_R ,  BSLS  ,  RCTL  ,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
-                                          KC_LALT, KC_CMD_SP_T,  KC_ESC,        KC_ENT,   KC_DEL , _______
+                                            LALT  ,CMD_SP_T,   ESC  ,           ENT  ,   DEL  , _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
 
