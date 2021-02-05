@@ -25,6 +25,7 @@ enum custom_keycodes {
   CT_SHTAB,
   KC_WALRUS,
   KC_NEQ,
+  KC_LBRQT,
   ADJUST,
 };
 
@@ -125,16 +126,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           _______,  _______, _______,           ENT  ,  BSPC  , _______
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
   ),
-
+ 
   [_SYM] = LAYOUT_kc(
   //          ┌────────┬────────┬────────┬────────┬────────┬────────┐       ┌────────┬────────┬────────┬────────┬────────┬────────┐
                   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,
   // ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐
-         NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,  LBRC  ,  RBRC  ,  PLUS  ,   NO   ,   NO   ,   NO   ,
+         NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,   NO   ,   NO   ,  PLUS  ,   NO   ,   NO   ,   NO   ,
   // └────────┼────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┼────────┘
-                  NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,  LPRN  ,  RPRN  ,   EQL  , WALRUS ,  PIPE  ,
+                  NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,  LPRN  ,  RPRN  ,   EQL  , WALRUS ,   NO   ,
   //          ├────────┼────────┼────────┼────────┼────────┼────────┤       ├────────┼────────┼────────┼────────┼────────┼────────┤
-                  NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,  LCBR  ,  RCBR  ,   NEQ  ,  BSLS  ,   NO   ,
+                  NO   ,   NO   ,   NO   ,   NO   ,   NO   ,   NO   ,           NO   ,   NEQ  ,  PIPE  ,  LBRQT ,  BSLS  ,   NO   ,
   //          └────────┴────────┴────────┴────────┼────────┼────────┤       ├────────┼────────┴────────┴────────┴────────┴────────┘
                                             NO   ,    NO   ,   NO   ,         _______, _______, _______   
                                     //   └────────┴────────┴────────┘       └────────┴────────┴────────┘
@@ -248,6 +249,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_WALRUS: if (record->event.pressed) SEND_STRING(":="); break;
     case KC_NEQ:    if (record->event.pressed) SEND_STRING("!="); break;
+    case KC_LBRQT:  if (record->event.pressed) SEND_STRING("['"); break;
     case ADJUST:
       if (record->event.pressed) {
         layer_on(_ADJUST);
